@@ -1,24 +1,29 @@
-# README
+# Ruby on Rails Code Assignment
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Please clone this repo and follow the instructions. **Do not** fork it, otherwise, everyone will see your answer.
 
-Things you may want to cover:
+Your goal is to create an API endpoint where users can book seats for an event while ensuring data integrity and concurrency handling. Please keep this to 15-20 minutes of work. Please add any notes / comments to your code to explain your thought process. You do not need to add authentication or authorization.
 
-* Ruby version
+## Requirements
 
-* System dependencies
+1. Endpoint:
 
-* Configuration
+- POST /api/v1/events/:id/book
+- Accepts a JSON payload with the number of seats to book ({ seats: 2 }).
 
-* Database creation
+2. Concurrency Handling:
 
-* Database initialization
+- Multiple users should be able to book seats concurrently without overselling.
+- Use database-level constraints and ActiveRecord transactions for safe concurrent bookings.
 
-* How to run the test suite
+3. Validation and Error Handling:
 
-* Services (job queues, cache servers, search engines, etc.)
+- Prevent overbooking (e.g., if an event has 100 seats and 98 are taken, booking 5 should return an error).
+- Return appropriate HTTP status codes and error messages.
 
-* Deployment instructions
+## Evaluation Criteria
 
-* ...
+- Proper use of ActiveRecord transactions and locks.
+- Thoughtful error handling.
+- Clean, efficient code following Rails conventions.
+- Minimal boilerplate, focused on logic and concurrency handling.
